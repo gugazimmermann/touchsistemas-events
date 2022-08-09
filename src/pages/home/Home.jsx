@@ -11,9 +11,10 @@ function App() {
 	const [event, setEvent] = useState();
 	const [logo, setLogo] = useState();
 	const [phone, setPhone] = useState('');
-	const [error, setError] = useState(true);
+	const [error, setError] = useState(false);
 
 	function normalizePhone(value) {
+		setError(false);
 		if (!value) return value;
 		const currentValue = value.replace(/[^\d]/g, '');
 		const cvLength = currentValue.length;
@@ -27,6 +28,7 @@ function App() {
 	}
 
 	function handleSubmit(e) {
+		console.log(phone)
 		e.preventDefault();
 		setError(false)
 		if (!phone || phone.length < 15) setError(true);
@@ -56,6 +58,11 @@ function App() {
 		}
 	}, []);
 
+	function isDisabled() {
+		if (phone.length < 15) return true
+		return false
+	}
+
 	return (
 		<>
 			<Nav />
@@ -66,14 +73,14 @@ function App() {
 						{logo && <img alt="logo" className="object-scale-down w-6/12 rounded-md" src={logo} />}
 						<h1 className="font-bold text-2xl">{event.name}</h1>
 						<h2 className="text-2xl">Digite seu Celular</h2>
-						<form onSubmit={(e) => handleSubmit(e)} className="w-full flex justify-end items-center relative">
+						<form onSubmit={handleSubmit} className="w-full flex justify-end items-center relative">
 							<input
 								value={phone || ''}
 								onChange={(e) => handleChangePhone(e.target.value)}
 								type="tel"
 								className={`w-full p-3 text-xl font-bold bg-white bg-clip-padding border border-solid rounded transition ease-in-out m-0 focus:border-amber-500 focus:outline-none ${ error ? 'border-red-500' : 'border-amber-300'}`}
 							/>
-							<button type="submit" className="absolute right-2">
+							<button type="submit" className="absolute right-2" disabled={isDisabled()}>
 								<i className={`bx bxs-phone-outgoing  text-4xl ${ error ? 'text-red-500' : 'text-secondary'}`} />
 							</button>
 						</form>
