@@ -19,7 +19,7 @@ jobs:
           echo REACT_APP_TITLE=${{ secrets.REACT_APP_TITLE }} >> .env
           echo REACT_APP_LOGO_BUCKET=${{ secrets.REACT_APP_LOGO_BUCKET }} >> .env
           echo REACT_APP_API=${{ secrets.REACT_APP_API }} >> .env
-          cat .env
+      - run: cat .env
       - run: npm ci
       - run: npm run build
       - uses: jakejarvis/s3-sync-action@master
