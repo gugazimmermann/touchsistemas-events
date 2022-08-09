@@ -1,5 +1,5 @@
 import NotFoundImg from '../../images/404.svg';
-import Nav from '../home/components/Nav';
+import Nav from '../../components/Nav';
 
 function NotFound() {
 	return (

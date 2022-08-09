@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import Loading from '../../components/Loading';
-import Nav from './components/Nav';
+import Nav from '../../components/Nav';
 
 function App() {
 	const params = useParams();
@@ -12,19 +11,6 @@ function App() {
 	const [event, setEvent] = useState();
 	const [logo, setLogo] = useState();
 	const [phone, setPhone] = useState();
-
-	async function handleLogo(id) {
-		setLogo(`${process.env.REACT_APP_LOGO_BUCKET}${id}.png`);
-	}
-
-	async function handleGetEvent(id) {
-		setLoading(true);
-		const { data } = await axios.get(`${process.env.REACT_APP_API}${id}`);
-		if (!data?.id) navigate('/');
-		setEvent(data);
-		handleLogo(data.id);
-		setLoading(false);
-	}
 
 	function normalizePhone(value) {
 		if (!value) return value;
@@ -40,8 +26,29 @@ function App() {
 	}
 
 	useEffect(() => {
-		if (params.id) handleGetEvent(params.id);
-	}, [params]);
+		console.log(params.id);
+		if (params.id) {
+			setLoading(true);
+			fetch(`${process.env.REACT_APP_API}${params.id}`)
+				.then((res) => res.json())
+				.then(
+					(data) => {
+						console.log(data)
+						setLoading(false);
+						if (!data?.id) navigate('/');
+						setEvent(data);
+						setLogo(`${process.env.REACT_APP_LOGO_BUCKET}${params.id}.png`);
+					},
+					(error) => {
+						console.log(error);
+						setLoading(false);
+						navigate('/');
+					}
+				);
+		} else {
+			navigate('/');
+		}
+	}, []);
 
 	return (
 		<>
