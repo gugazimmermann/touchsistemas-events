@@ -9,8 +9,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && npx tailwindcss -o build.css --minify",
-    "test": "react-scripts test --silent --noStackTrace --colors --coverage --watchAll=false --no-cache --runInBand",
-    "test-ci": "react-scripts test --silent --noStackTrace --watchAll=false --no-cache --runInBand",
+    "test": "react-scripts test --silent --noStackTrace --colors --coverage --watchAll=false --no-cache --runInBand --passWithNoTests",
+    "test-ci": "react-scripts test --silent --noStackTrace --watchAll=false --no-cache --runInBand --passWithNoTests",
     "eject": "react-scripts eject",
     "lint": "eslint '*/**/*.{js,jsx,css,md,html,json}' --fix",
     "prettier": "prettier . --write",

@@ -10,7 +10,7 @@ export default function Nav() {
 					to="/"
 				>
 					<LogoIcon styles="h-10 w-10" />
-					{process.env.REACT_APP_TITLE}
+					<span data-testid="title">{process.env.REACT_APP_TITLE}</span>
 				</Link>
 			</div>
 		</nav>

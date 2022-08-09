@@ -19,10 +19,9 @@ function App() {
 		setLoading(true);
 		const { data } = await axios.get(`https://gjdkij839d.execute-api.us-east-1.amazonaws.com/dev/events/${id}`);
 		setEvent(data);
-		handleLogo(data.id)
+		handleLogo(data.id);
 		setLoading(false);
 	}
-
 
 	useEffect(() => {
 		if (params.id) handleGetEvent(params.id);
