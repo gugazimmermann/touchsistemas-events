@@ -14,12 +14,12 @@ function App() {
 	const [phone, setPhone] = useState();
 
 	async function handleLogo(id) {
-		setLogo(`https://touchsistemasadmin180243-dev.s3.amazonaws.com/public/logo/${id}.png`);
+		setLogo(`${process.env.REACT_APP_LOGO_BUCKET}${id}.png`);
 	}
 
 	async function handleGetEvent(id) {
 		setLoading(true);
-		const { data } = await axios.get(`https://gjdkij839d.execute-api.us-east-1.amazonaws.com/dev/events/${id}`);
+		const { data } = await axios.get(`${process.env.REACT_APP_API}${id}`);
 		if (!data?.id) navigate('/');
 		setEvent(data);
 		handleLogo(data.id);
