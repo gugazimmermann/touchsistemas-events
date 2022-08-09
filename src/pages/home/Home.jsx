@@ -69,9 +69,9 @@ function App() {
 			<div className="h-screen flex flex-row justify-center items-center">
 				{loading && <Loading />}
 				{!loading && event && (
-					<div className="bg-white w-full mx-4 sm:w-10/12 md:w-6/12 sm:mx-0 p-4 sm:p-8 flex flex-col justify-center items-center gap-4 rounded-lg shadow-lg">
+					<div className="bg-white w-full mx-4 sm:w-10/12 md:w-6/12 sm:mx-0 p-8 sm:p-8 flex flex-col justify-center items-center gap-4 rounded-lg shadow-lg">
 						{logo && <img alt="logo" className="object-scale-down w-6/12 rounded-md" src={logo} />}
-						<h1 className="font-bold text-2xl">{event.name}</h1>
+						<h1 className="font-bold text-2xl text-center">{event.name}</h1>
 						<h2 className="text-2xl">Digite seu Celular</h2>
 						<form onSubmit={handleSubmit} className="w-full flex justify-end items-center relative">
 							<input
