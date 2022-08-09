@@ -1,8 +1,10 @@
 import NotFoundImg from '../../images/404.svg';
+import Nav from '../home/components/Nav';
 
 function NotFound() {
 	return (
 		<div className="container bg-white mx-auto">
+			<Nav />
 			<main className="flex h-screen justify-center items-center">
 				<div className="flex flex-col w-full items-center text-5xl text-primary">
 					<h1 data-testid="title" className="mb-4">

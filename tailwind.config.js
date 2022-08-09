@@ -13,7 +13,7 @@ module.exports = {
         secondary: "#10b981",
         warning: "#a855f7",
         danger: "#dc2626",
-        background: "#f8fafc",
+        background: "#fafafa",
         text: "#475569",
       },
     },
