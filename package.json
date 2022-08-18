@@ -15,7 +15,7 @@
     "lint": "eslint '*/**/*.{js,jsx,css,md,html,json}' --fix",
     "prettier": "prettier . --write",
     "prepare": "npm run prettier && npm run lint && npm run test-ci",
-    "pull": "amplify pull --appId d35h9ooc2idrby --envName dev",
+    "pull": "amplify pull --appId d2dv7t7we3p1lx --envName dev",
     "codegen": "rm -rf src/graphql src/models && amplify configure codegen && amplify codegen && amplify codegen models"
   },
   "engines": {
@@ -41,6 +41,7 @@
     ]
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "boxicons": "^2.1.2",
     "moment": "^2.29.4",
     "react": "^18.2.0",
